@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Weather App with Map</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Weather App with Map</h1>
+    <div class="input-box">
+      <input type="text" id="cityinput" placeholder="Enter city name...">
+      <button id="add">Search</button>
+      <button id="voiceSearch">🎤 Speak</button>
+      <button id="locate">📍 Use My Location</button>
+
+    </div>
+
+    <div id="loading" style="display: none;">Loading...</div>
+    <div class="weather-box" id="weather-box" style="display: none;">
+      <div id="weather-box" style="display: none;"></div>
+      <div id="alert-box" style="display: none;"></div>
+
+      <h2 id="cityoutput"></h2>
+      <p id="description"></p>
+      <p id="temp"></p>
+      <p id="wind"></p>
+      <p id="humidity"></p>
+      <button id="unitToggle">Switch to °F</button>
+    </div>
+
+    <div class="forecast" id="forecast"></div>
+
+    <h2>Location Map</h2>
+    <div id="map"></div>
+  </div>
+  
+  <button id="darkModeToggle">🌙 Dark Mode</button>
+
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
