@@ -4,18 +4,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* styles/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Dark mode styles */
-.dark {
-  background-color: #1a1a1a;
-  color: white;
-}
-
-
 /* Root Variables for Light & Dark Mode */
 :root {
   --bg-color: #ffffff;
@@ -124,7 +112,7 @@ button:hover {
     margin: 20px auto;
     padding: 15px;
   }
-  
+
 
   .input-box {
     flex-direction: column;
