@@ -1,0 +1,7 @@
+flask==2.3.3
+opencv-python==4.7.0.72
+numpy==2.2.5
+Pillow==11.2.1
+requests==2.31.0
+setuptools>=65.5.1
+wheel>=0.38.4 

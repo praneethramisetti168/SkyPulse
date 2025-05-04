@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Sky Pulse - Interactive Weather Experience</title>
+  
+  <!-- Favicon and Icons -->
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/weather-icon.png') }}">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/weather-icon.png') }}">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>Sky Pulse</h1>
+    <p class="tagline">Experience Weather Like Never Before</p>
+
+    <!-- Weather Search Section -->
+    <div class="glass-container">
+      <h2>Weather Search</h2>
+      <div class="search-controls">
+        <input type="text" id="cityinput" placeholder="Enter city name...">
+        <button id="add">🔍 Search</button>
+        <button id="voiceSearch">🎤 Voice Search</button>
+        <button id="locate">📍 My Location</button>
+      </div>
+    </div>
+
+    <!-- Weather Display -->
+    <div id="weather-box" class="glass-container" style="display: none;">
+      <h2 id="cityoutput"></h2>
+      <img id="weather-icon" src="" alt="Weather Icon">
+      <p id="weather-time"></p>
+      <p id="description"></p>
+      <p id="temp"></p>
+      <p id="wind"></p>
+      <p id="humidity"></p>
+      
+      <!-- Weather Sound Player -->
+      <div class="weather-sound-player">
+        <h3>🎵 Weather Ambience</h3>
+        <audio id="weatherSound" controls loop>
+          <source src="" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <button id="toggleSound" class="sound-btn">Play Ambience</button>
+      </div>
+    </div>
+
+    <!-- Alert Box -->
+    <div id="alert-box" class="glass-container" style="display: none;"></div>
+
+    <!-- Weather Image Analysis -->
+    <div class="glass-container">
+      <h2>📸 Weather Image Analysis</h2>
+      <div class="image-controls">
+        <button id="openCamera" class="camera-btn">📷 Open Camera</button>
+        <label for="imageUpload" class="upload-btn">📁 Upload Photo</label>
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+        <button id="shareToComm" class="share-btn" disabled>Share with Community</button>
+      </div>
+
+      <!-- Camera Preview -->
+      <div id="cameraContainer" class="camera-container" style="display: none;">
+        <video id="cameraPreview" autoplay playsinline></video>
+        <div class="camera-controls">
+          <button id="capturePhoto" class="capture-btn">📸 Capture</button>
+          <button id="switchCamera" class="switch-btn">🔄 Switch Camera</button>
+          <button id="closeCamera" class="close-btn">❌ Close</button>
+        </div>
+      </div>
+
+      <!-- Drag and Drop Zone -->
+      <div id="dropZone" class="drop-zone">
+        <div class="drop-zone-text">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <p>Drag and drop any weather image here</p>
+        </div>
+      </div>
+
+      <div id="weather-image-container" style="display: none;"></div>
+    </div>
+
+    <!-- Image Analysis Results Modal -->
+    <div id="analysisModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Weather Analysis Results</h2>
+        <div id="analysisResults"></div>
+      </div>
+    </div>
+
+    <!-- Community Weather Gallery -->
+    <div class="glass-container">
+      <h2>🌍 Weather Community Gallery</h2>
+      <div class="gallery-controls">
+        <button id="refreshGallery">Refresh Gallery</button>
+        <select id="weatherFilter">
+          <option value="all">All Weather Types</option>
+          <option value="Clear Sky">Clear Sky</option>
+          <option value="Cloudy">Cloudy</option>
+          <option value="Rain">Rain</option>
+          <option value="Sunset">Sunset</option>
+          <option value="Thunderstorm">Thunderstorm</option>
+        </select>
+      </div>
+      <div id="communityGallery" class="photo-gallery"></div>
+    </div>
+
+    <!-- 5-Day Forecast -->
+    <div class="glass-container">
+      <h2>5-Day Forecast</h2>
+      <div id="forecast" class="forecast-container"></div>
+    </div>
+
+    <!-- Map Container -->
+    <div class="glass-container">
+      <h2>📍 Weather Map</h2>
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <!-- Share Photo Modal -->
+  <div id="shareModal" class="modal">
+    <div class="modal-content glass-container">
+      <span class="close">&times;</span>
+      <h2>Share Your Weather Photo</h2>
+      <input type="text" id="photoLocation" placeholder="Location">
+      <textarea id="photoDescription" placeholder="Description"></textarea>
+      <button id="submitShare">Share Photo</button>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div id="loading" style="display: none;">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Control Buttons -->
+  <div class="control-buttons">
+    <button id="unitToggle">Switch to °F</button>
+    <button id="darkModeToggle">🌙 Dark Mode</button>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
+
+
+
+
+
+
